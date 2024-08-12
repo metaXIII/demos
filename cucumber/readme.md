@@ -1,12 +1,9 @@
-# demonstration of usage in differents projects and technologies
+# cucumber demo
 
 [![CI](https://github.com/metaXIII/cucumber-demo/actions/workflows/maven.yml/badge.svg)](https://github.com/metaXIII/cucumber-demo/actions/workflows/maven.yml)
 
 ![java](https://img.shields.io/badge/java-21-green)
 ![maven](https://img.shields.io/badge/maven-3.9.8-blue)
-
-# Cucumber 
-
 
 ## Disclaimer
 
