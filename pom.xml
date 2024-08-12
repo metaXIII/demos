@@ -4,10 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <name>demos</name>
     <groupId>com.metaxiii.fr</groupId>
     <artifactId>parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.3.2</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <properties>
         <java.version>21</java.version>
@@ -26,7 +34,7 @@
         <sonar.coverage.exclusions>${sonar.exclusions}</sonar.coverage.exclusions>
         <sonar.cpd.exclusions>${sonar.exclusions}</sonar.cpd.exclusions>
         <sonar.coverage.jacoco.xmlReportPaths>
-            ${project.basedir}/report/target/site/jacoco-aggregate/jacoco.xml
+            ${project.basedir}/../report/target/site/jacoco-aggregate/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
         <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
     </properties>
@@ -34,6 +42,7 @@
 
     <modules>
         <module>cucumber</module>
+        <module>spring-batch</module>
         <module>report</module>
     </modules>
 
@@ -60,11 +69,10 @@
                 <version>${jacoco-maven-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>report</id>
+                        <id>prepare-agent</id>
                         <goals>
-                            <goal>report-aggregate</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
-                        <phase>verify</phase>
                     </execution>
                 </executions>
             </plugin>
