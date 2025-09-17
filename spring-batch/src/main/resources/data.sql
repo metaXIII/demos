@@ -1,6 +1,9 @@
+create sequence if not exists person_id_seq;
+create sequence if not exists duplicated_id_seq;
+
 create table if not exists person_entity
 (
-    id         int     not null,
+    id         int     not null default nextval('person_id_seq'),
     first_name varchar not null,
     last_name  varchar not null,
     constraint pk_person_entity primary key (id)
@@ -8,9 +11,10 @@ create table if not exists person_entity
 
 create table if not exists duplicated_entity
 (
-    id         int     not null,
+    id         int     not null default nextval('duplicated_id_seq'),
     first_name varchar not null,
     last_name  varchar not null,
+    is_active  boolean not null default false,
     constraint pk_duplicated primary key (id)
 );
 
