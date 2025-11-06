@@ -8,6 +8,7 @@ import jakarta.persistence.Id;
 
 @Entity(name = "person_entity")
 public class PersonEntity {
+
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
   private int id;
@@ -17,4 +18,28 @@ public class PersonEntity {
 
   @Column(name = "last_name", nullable = false)
   private String lastName;
+
+  public int getId() {
+    return id;
+  }
+
+  public String getFirstName() {
+    return firstName;
+  }
+
+  public String getLastName() {
+    return lastName;
+  }
+
+  public void setId(final int id) {
+    this.id = id;
+  }
+
+  public void setFirstName(final String firstName) {
+    this.firstName = firstName;
+  }
+
+  public void setLastName(final String lastName) {
+    this.lastName = lastName;
+  }
 }
