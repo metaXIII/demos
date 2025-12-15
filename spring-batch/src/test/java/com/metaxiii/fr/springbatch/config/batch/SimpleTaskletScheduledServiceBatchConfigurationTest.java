@@ -6,12 +6,12 @@ import static org.mockito.Mockito.verify;
 
 import com.metaxiii.fr.springbatch.service.PersonService;
 import org.junit.jupiter.api.Test;
-import org.springframework.batch.test.JobLauncherTestUtils;
+import org.springframework.batch.test.JobOperatorTestUtils;
 import org.springframework.batch.test.JobRepositoryTestUtils;
 import org.springframework.batch.test.context.SpringBatchTest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 @SpringBatchTest
@@ -20,22 +20,22 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 class SimpleTaskletScheduledServiceBatchConfigurationTest {
 
   @Autowired
-  private JobLauncherTestUtils jobLauncherTestUtils;
+  private SimpleTaskletScheduledServiceBatchConfiguration batchConfiguration;
 
   @Autowired
-  private SimpleTaskletScheduledServiceBatchConfiguration batchConfiguration;
+  private JobOperatorTestUtils jobOperatorTestUtils;
 
   @Autowired
   private JobRepositoryTestUtils jobRepositoryTestUtils;
 
-  @MockBean
+  @MockitoBean
   private PersonService personService;
 
   @Test
   void itShouldExecuterMonJob() throws Exception {
     jobRepositoryTestUtils.removeJobExecutions();
-    final var jobParameters = this.jobLauncherTestUtils.getUniqueJobParameters();
-    final var jobExecution = this.jobLauncherTestUtils.launchJob(jobParameters);
+    final var jobParameters = jobOperatorTestUtils.getUniqueJobParameters();
+    final var jobExecution = jobOperatorTestUtils.startJob(jobParameters);
     assertEquals("COMPLETED", jobExecution.getStatus().name());
     verify(personService).doSomething();
   }
