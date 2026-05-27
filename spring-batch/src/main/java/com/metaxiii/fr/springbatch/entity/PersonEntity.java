@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class PersonEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.SEQUENCE)
-  private int id;
+  private Integer id;
 
   @Column(name = "first_name", nullable = false)
   private String firstName;
