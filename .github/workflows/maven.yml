@@ -12,10 +12,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Environment: $ENVIRONMENT"
-        env:
-          ENVIRONMENT: ${{ inputs.environment }}
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
