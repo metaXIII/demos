@@ -9,7 +9,10 @@
       "matchPackageNames": [
         "com.metaxiii.fr*"
       ],
-      "enabled": false
+      "matchUpdateTypes": ["patch", "minor"],
+      "matchCurrentVersion": "!/^0/",
+      "minimumReleaseAge": "3 days",
+      "automerge": true
     }
   ]
 }
